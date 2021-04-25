@@ -11,12 +11,18 @@ public class AudioManager : MonoBehaviour
     [SerializeField]
     AudioSource source;
 
+    public AudioSource BGMSource;
+    public AudioSource GameOverSource;
+
+    public bool isGameOver;
+    float fadeTime = 0f;
 
     //hard code babeyyy~
     public AudioClip[] CasingSounds;
     public AudioClip[] EnemySounds;
     public AudioClip[] ExplosionSounds;
     public AudioClip[] ImpactSounds;
+    public AudioClip[] HurtSounds;
 
     private void Awake()
     {
@@ -31,7 +37,16 @@ public class AudioManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(isGameOver)
+        {
+            fadeTime += Time.deltaTime;
+            if(fadeTime <1f)
+            {
+                BGMSource.volume = Mathf.Lerp(0.234f, 0f, fadeTime);
+                GameOverSource.volume = Mathf.Lerp(0, 0.234f, fadeTime);
+                GameOverSource.Play();
+            }
+        }
     }
 
     //default volume is 0.3f
@@ -62,7 +77,16 @@ public class AudioManager : MonoBehaviour
         temp.Play();
         RemoveUnusedAudioSource();
     }
-
+    public void PlayCachedSound(AudioClip[] clips, Vector2 pos, float volume, bool randPitch = false)
+    {
+        AudioSource temp = Instantiate(source, pos, Quaternion.identity);
+        ListofAudioSources.Add(temp);
+        if (randPitch) temp.pitch *= Random.Range(0.8f, 2.5f);
+        temp.volume = volume;
+        temp.clip = clips[Random.Range(0, clips.Length)];
+        temp.Play();
+        RemoveUnusedAudioSource();
+    }
 
     void RemoveUnusedAudioSource()
     {

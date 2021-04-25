@@ -44,3 +44,12 @@ TagManager:
   - name: Gun
     uniqueID: 1827832997
     locked: 0
+  - name: Background
+    uniqueID: 837355071
+    locked: 0
+  - name: Middleground
+    uniqueID: 2559211499
+    locked: 0
+  - name: Foreground
+    uniqueID: 2098098837
+    locked: 0

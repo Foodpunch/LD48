@@ -42,7 +42,7 @@ public class ShotgunScript : MonoBehaviour
             {
              //   _muzzleFlashAnim.SetTrigger("Flash");
                 AudioManager.instance.PlaySoundAtLocation(shotgunSound,0.3f, transform.position,true);
-                CameraManager.instance.Shake(.15f);
+                CameraManager.instance.Shake(.25f);
                 SpawnBullet();
                 GunRecoil();
                 nextTimeToFire = Time.time + (1f / fireRate);

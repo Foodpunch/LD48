@@ -25,7 +25,6 @@ public class VFXManager : MonoBehaviour
 
     public void SpawnEffect(Effect data)
     {
-        Debug.Log("FXSpawned");
         Quaternion lookRot = Quaternion.FromToRotation(data.originDirection, data.contact.normal);
         GameObject FXClone = Instantiate(EffectsList[data.index], data.contact.point, lookRot);
         FXClone.transform.SetParent(transform);

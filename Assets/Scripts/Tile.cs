@@ -7,7 +7,7 @@ public class Tile : MonoBehaviour,IDamageable
     public float health;
     public bool isDestructible;
     public int blockChance;
-    private bool isStatic;
+    public bool isStatic;
 
     public void OnTakeDamage(float damage)
     {
