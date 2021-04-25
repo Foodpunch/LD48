@@ -9,7 +9,7 @@ public class ShotgunScript : MonoBehaviour
     public GameObject shell;
 
     bool isFiring;
-    float fireRate =0.8f;
+    float fireRate =1.5f;
     float recoil = 10f;
     int pelletCount = 5;
     float spreadAngle = 45f;
@@ -19,10 +19,17 @@ public class ShotgunScript : MonoBehaviour
     public Transform shootPoint;
     [SerializeField]
     Rigidbody2D playerRB;
+    [SerializeField]
+    Animator _gunAnim;
+    [SerializeField]
+    Animator _muzzleFlashAnim;
+    [SerializeField]
+    AudioClip shotgunSound;
     // Start is called before the first frame update
     void Start()
     {
-        
+        _gunAnim.GetComponent<Animator>();
+        _muzzleFlashAnim.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -33,14 +40,19 @@ public class ShotgunScript : MonoBehaviour
             gunTime += Time.deltaTime;
             if (Time.time >= nextTimeToFire)
             {
+             //   _muzzleFlashAnim.SetTrigger("Flash");
+                AudioManager.instance.PlaySoundAtLocation(shotgunSound,0.3f, transform.position,true);
+                CameraManager.instance.Shake(.15f);
                 SpawnBullet();
                 GunRecoil();
                 nextTimeToFire = Time.time + (1f / fireRate);
+                _gunAnim.SetTrigger("shotgunFired");
             }
         }
         else
         {
             gunTime = 0;
+           
         }
  
  

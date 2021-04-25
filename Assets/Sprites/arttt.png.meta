@@ -1,10 +1,22 @@
 fileFormatVersion: 2
-guid: ea376cdc18fb5984da826272a56c5177
+guid: 03d0b40c806d857469901d40bd7ebf8a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7245283582242501877
-    second: Game art_0
+      213: 4016010119914984850
+    second: arttt_0
+  - first:
+      213: -2209630439024763075
+    second: arttt_1
+  - first:
+      213: 3626027494345053529
+    second: arttt_2
+  - first:
+      213: -7380101195435698369
+    second: arttt_3
+  - first:
+      213: 2875960121118962133
+    second: arttt_4
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -44,12 +56,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 126
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -106,22 +118,106 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Game art_0
+      name: arttt_0
       rect:
         serializedVersion: 2
-        x: 33
-        y: 520
-        width: 85
-        height: 547
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 898
+        width: 126
+        height: 126
+      alignment: 9
+      pivot: {x: 0.26190478, y: 0.484127}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b0b477718f4937b90800000000000000
-      internalID: -7245283582242501877
+      spriteID: 29518e32debbbb730800000000000000
+      internalID: 4016010119914984850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arttt_1
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 898
+        width: 126
+        height: 126
+      alignment: 9
+      pivot: {x: 0.2936508, y: 0.484127}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3fd905a2d0d551e0800000000000000
+      internalID: -2209630439024763075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arttt_2
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 898
+        width: 126
+        height: 126
+      alignment: 9
+      pivot: {x: 0.3015873, y: 0.4761905}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9559c3a6bcc325230800000000000000
+      internalID: 3626027494345053529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arttt_3
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 898
+        width: 126
+        height: 126
+      alignment: 9
+      pivot: {x: 0.2936508, y: 0.48412699}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f379e9f601d949990800000000000000
+      internalID: -7380101195435698369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arttt_4
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 898
+        width: 126
+        height: 126
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d13c7f1e7679e720800000000000000
+      internalID: 2875960121118962133
       vertices: []
       indices: 
       edges: []

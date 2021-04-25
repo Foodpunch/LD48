@@ -36,11 +36,16 @@ public class BulletScript : MonoBehaviour
                 if(contact.collider.gameObject.GetComponent<IDamageable>() != null)
                 {
                     contact.collider.gameObject.GetComponent<IDamageable>().OnTakeDamage(bulletDamage);
+                    
                     //spawn bullet effect
                 }
+                Effect bulletEffect = new Effect(0, Vector3.up, contact);
+                Effect sparkEffect = new Effect(2, Vector2.right, contact);
+                VFXManager.instance.SpawnEffect(bulletEffect);
+                VFXManager.instance.SpawnEffect(sparkEffect);
                 //spawn environment effect
             }
-           // Destroy(gameObject);
+            Destroy(gameObject);
             return;
         }
     }
