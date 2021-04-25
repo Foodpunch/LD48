@@ -14,6 +14,7 @@ public class LevelManager : MonoBehaviour
 
     public AudioClip Gameoversong;
     public Animator ropeAnim;
+    public Animator gameoverText;
 
     public Light2D gunLight;
     public Light2D globalLight;
@@ -38,6 +39,7 @@ public class LevelManager : MonoBehaviour
     public void GameOver()
     {
         ropeAnim.SetBool("isGameOver",true);
+        gameoverText.SetTrigger("isGameOver");
         AudioManager.instance.isGameOver=true;
         fadeLights = true;
     }
