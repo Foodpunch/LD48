@@ -13,6 +13,15 @@ public class RoomScript : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
-        transform.Translate(Vector2.up *RoomManager.RoomScrollSpeed* Time.deltaTime);
+        //transform.Translate(Vector2.up *RoomManager.instance.RoomScrollSpeed* Time.deltaTime);
+    }
+    private void Update()
+    {
+        float LimitPosY = roomSize.y + 9f;
+        if (transform.position.y >= LimitPosY)
+        {
+            RoomManager.instance.SpawnNextRoom();
+            gameObject.SetActive(false);
+        }
     }
 }

@@ -1,21 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using NaughtyAttributes;
-public class PlayerScript : MonoBehaviour
+public class PlayerScript : MonoBehaviour,IDamageable
 {
     Vector3 mouseInput;
     Vector3 mouseDir;
     public GameObject gun;
 
     Rigidbody2D _rb;
+    CircleCollider2D _col;
 
     public SpriteRenderer[] playerSpriteRenderers;
     public Animator playerAnim;
-    public int health = 9;
+    public float health = 9;
+    public Text healthText;
 
     bool isHurt;
-    bool isDead;
+    public bool isDead;
     float flashTime;
     float iFrameDuration =2f;
     public static PlayerScript instance;
@@ -27,6 +30,7 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
+        _col=GetComponent<CircleCollider2D>();
     }
 
     // Update is called once per frame
@@ -34,6 +38,7 @@ public class PlayerScript : MonoBehaviour
     {
         SetDirectionToMouse();
         if (isHurt && !isDead) SpriteFlash();
+        
     }
     void SetDirectionToMouse()
     {
@@ -43,12 +48,30 @@ public class PlayerScript : MonoBehaviour
         mouseDir = mousePosWorld - transform.position;                              //get the direction, pos to player
         gun.transform.right = mouseDir;                                             
     }
-    [Button]
-    public void TakeDamage()
+    public void OnTakeDamage(float damage)
     {
-        isHurt = true;
-        playerAnim.SetTrigger("isHurt");
-        AudioManager.instance.PlayCachedSound(AudioManager.instance.HurtSounds, transform.position, 0.3f, true);
+        if (isHurt) return;
+        health -= damage;
+        if (health <= 0 && !isDead)     //should do an event, because this is convoluted but I'm rushing
+        {
+            healthText.text = "x0";
+            GameOver();
+            LevelManager.instance.GameOver();
+            return;
+        }
+        if (!isDead)
+        {
+            healthText.text = "x" + ((int)health).ToString();
+            isHurt = true;
+            playerAnim.SetTrigger("isHurt");
+            AudioManager.instance.PlayCachedSound(AudioManager.instance.HurtSounds, transform.position, 0.3f, true);
+            //CameraManager.instance.FreezeTime(0.3f);
+        }
+    }
+    [Button]
+    public void HurtPlayer()
+    {
+        OnTakeDamage(1);
     }
    public void SpriteFlash()
     {
@@ -76,6 +99,12 @@ public class PlayerScript : MonoBehaviour
                 playerSpriteRenderers[i].color = color;
             }
         }
-       
+    }
+
+    public void GameOver()
+    {
+        _col.enabled = false;   
+        isDead = true;
+        gun.SetActive(false);
     }
 }

@@ -14,11 +14,11 @@ TagManager:
   - Bullet
   - Gun
   - Player
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Rope
+  - Prop
+  - Hazard
+  - Enemy
+  - Wisp
   - 
   - 
   - 

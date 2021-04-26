@@ -6,7 +6,7 @@ public class BulletScript : MonoBehaviour
 {
     float bulletDamage = 1f;
     float bulletSpeed =18f ;
-    float timeToDisappear = 1.5f;
+    float timeToDisappear = .35f;
 
     float bulletAirTime;
     Rigidbody2D _rb;

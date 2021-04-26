@@ -41,8 +41,8 @@ public class ShotgunScript : MonoBehaviour
             if (Time.time >= nextTimeToFire)
             {
              //   _muzzleFlashAnim.SetTrigger("Flash");
-                AudioManager.instance.PlaySoundAtLocation(shotgunSound,0.3f, transform.position,true);
-                CameraManager.instance.Shake(.25f);
+                AudioManager.instance.PlaySoundAtLocation(shotgunSound,0.25f, transform.position,true);
+                CameraManager.instance.Shake(.25f, false, true);
                 SpawnBullet();
                 GunRecoil();
                 nextTimeToFire = Time.time + (1f / fireRate);
@@ -54,9 +54,6 @@ public class ShotgunScript : MonoBehaviour
             gunTime = 0;
            
         }
- 
- 
-        
     }
 
     private void SpawnBullet()

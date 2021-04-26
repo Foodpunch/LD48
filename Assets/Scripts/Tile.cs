@@ -8,11 +8,14 @@ public class Tile : MonoBehaviour,IDamageable
     public bool isDestructible;
     public int blockChance;
     public bool isStatic;
-
+    public AudioClip DestroySound;
+    public GameObject gibs;
+    bool isDestroyed;
     public void OnTakeDamage(float damage)
     {
+        if (!isDestructible) return;
         health -= damage;
-        if(health<=0)
+        if(health<=0 && !isDestroyed)
         {
             DespawnBlock();
         }
@@ -21,7 +24,7 @@ public class Tile : MonoBehaviour,IDamageable
     // Start is called before the first frame update
     void Start()
     {
-        
+        RollTile();
     }
 
     // Update is called once per frame
@@ -32,6 +35,11 @@ public class Tile : MonoBehaviour,IDamageable
     void DespawnBlock()
     {
         gameObject.SetActive(false);
+        if (DestroySound == null) return;
+        AudioManager.instance.PlayCachedSound(AudioManager.instance.WoodBreakSounds, transform.position, 0.3f);
+        VFXManager.instance.Poof(transform.position);
+        isDestroyed = true;
+
         //spawn whatever effects here
     }
     public void RollTile()

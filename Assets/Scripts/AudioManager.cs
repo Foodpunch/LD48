@@ -23,6 +23,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip[] ExplosionSounds;
     public AudioClip[] ImpactSounds;
     public AudioClip[] HurtSounds;
+    public AudioClip[] WoodBreakSounds;
+    public AudioClip[] Ambience;
 
     private void Awake()
     {
@@ -87,6 +89,7 @@ public class AudioManager : MonoBehaviour
         temp.Play();
         RemoveUnusedAudioSource();
     }
+    
 
     void RemoveUnusedAudioSource()
     {

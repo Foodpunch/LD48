@@ -5,13 +5,11 @@ using UnityEngine;
 public class CameraManager : MonoBehaviour
 {
     public static CameraManager instance;
-    public RippleEffect ripple;
     [SerializeField]
     [Range(0f, 1f)]
     float trauma;
 
     float shake;
-    float slow;
     float slowDuration;
 
     /*  Camera Shake Implementation from GDC
@@ -30,6 +28,8 @@ public class CameraManager : MonoBehaviour
     float offset = 0f;              //offsets perlin noise, changing Y axis
     float mult = 55f;               //multiplier for how drastic to scroll perlin
     bool isSustained;
+    float timeScale = 0.05f;
+
     private void Awake()
     {
         instance = this;
@@ -38,12 +38,12 @@ public class CameraManager : MonoBehaviour
     void Start()
     {
         player = PlayerScript.instance.gameObject;
-        ripple = GetComponent<RippleEffect>();
     }
-    public void Shake(float _trauma, bool _isSustained = false)
+    public void Shake(float _trauma, bool _isSustained = false,bool slow=false)
     {
         trauma += _trauma;
-        slowDuration = 0.1f;
+        if (slow) slowDuration = 0.1f;
+        else slowDuration = 0;
         if (_isSustained) trauma = Mathf.Clamp(trauma, 0f, _trauma);
         offset++;
     }
@@ -99,5 +99,10 @@ public class CameraManager : MonoBehaviour
     float GetPerlinNoise(float time)
     {
         return Mathf.PerlinNoise(time * mult, offset) - 0.5f;
+    }
+    public void FreezeTime(float duration, float strength = 0.05f)
+    {
+        slowDuration = duration;
+        timeScale = strength;
     }
 }
