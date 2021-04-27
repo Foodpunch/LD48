@@ -9,7 +9,7 @@ public class RoomManager : MonoBehaviour
     public List<RoomScript> ListOfRooms;
 
     public static RoomManager instance;
-    public float RoomScrollSpeed = 0.5f;
+    public float RoomScrollSpeed = 0.7f;
     public Transform roomParent;
 
    public float difficulty = 1;
@@ -38,11 +38,11 @@ public class RoomManager : MonoBehaviour
         }
         else
         {
-            RoomScrollSpeed = 0.5f*difficulty;
+            RoomScrollSpeed = 0.7f*difficulty;
         }
         if(!stopGame)
         roomParent.Translate(Vector2.up * RoomScrollSpeed * Time.deltaTime);
-        difficulty =Mathf.Clamp(difficulty, 1f, 30f);
+        difficulty =Mathf.Clamp(difficulty, 1f, 18f);
         depthsText.text = (69 + (int)roomParent.transform.position.y).ToString() + "m";
     }
     [Button]

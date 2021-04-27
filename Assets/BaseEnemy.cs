@@ -52,7 +52,7 @@ public class BaseEnemy : MonoBehaviour,IDamageable
     }
     void MoveToPlayer()
     {
-        _rb.velocity = transform.up *RoomManager.instance.difficulty * RoomManager.instance.RoomScrollSpeed*moveSpeed;
+        _rb.velocity = transform.up * RoomManager.instance.RoomScrollSpeed*moveSpeed;
         timer += Time.deltaTime;
         if (timer > 0.1f)
         {
